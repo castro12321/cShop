@@ -27,6 +27,7 @@ import castro.cshop.items.WorldEditLimitDouble;
 
 public enum CCommandID
 {
+	/*
 	// 0..100 <--- random items
 	MOB_LIMIT      (3),
 	
@@ -49,15 +50,15 @@ public enum CCommandID
 	MOB_LIMIT_100    (301),
 	MOB_LIMIT_250    (302),
 	MOB_LIMIT_500    (303),
-	
+	*/
 	// 1000..? <--- other
-	WE_LIMIT_DOUBLE  (1001),
-	WE_LIMIT_TRIPLE  (1002),
-	WE_LIMIT_100k    (1003),
-	WE_LIMIT_500k    (1004),
-	WE_LIMIT_2m      (1005, new WorldEditLimitDouble()),
+	WE_LIMIT_DOUBLE  (1001, new WorldEditLimitDouble()),
+	//WE_LIMIT_TRIPLE  (1002),
+	//WE_LIMIT_100k    (1003),
+	//WE_LIMIT_500k    (1004),
+	//WE_LIMIT_2m      (1005),
 	
-	DUNNO_INFINITE_REMOVE_LATER_xD(1/0, null);
+	DUNNO_INFINITE_REMOVE_LATER_xD(-42, null);
 	
 	public final int id;
 	public final ShopItem item;
@@ -88,6 +89,8 @@ public enum CCommandID
 			switch(extra)
 			{
 			case "double": return WE_LIMIT_DOUBLE;
+			}
+			/*
 			case "triple": return WE_LIMIT_TRIPLE;
 			case "100k"  : return WE_LIMIT_100k;
 			case "500k"  : return WE_LIMIT_500k;
@@ -112,7 +115,7 @@ public enum CCommandID
 			case "100": return MOB_LIMIT_100;
 			case "250": return MOB_LIMIT_250;
 			case "500": return MOB_LIMIT_500;
-			}
+			}*/
 		}
 		throw new NoSuchElementException();
 	}

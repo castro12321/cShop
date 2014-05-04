@@ -17,7 +17,7 @@ public class Shop
 	
 	private ShopItemData getItem(Player player, CCommandID id)
 	{
-		ShopItem item = Plugin.SQL.;
+		ShopItem item = Plugin.SQL;
 		return item;
 	}
 }
