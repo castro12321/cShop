@@ -10,14 +10,14 @@ public class Shop
 	public void buy(Player player, CCommandID itemId, long hours, String extra)
 	{
 		ShopItemData item = getItem(player, itemId);
-		
+		if(item == null)
+			item = Plugin.SQL.addItem();
 		item.extendHours(hours, extra);
 	}
 	
 	
 	private ShopItemData getItem(Player player, CCommandID id)
 	{
-		ShopItem item = Plugin.SQL;
-		return item;
+		return Plugin.SQL.getItem(player, id);
 	}
 }

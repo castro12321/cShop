@@ -94,23 +94,23 @@ public class SQL extends SQLBase
 		prep.executeUpdate();
 	}
 	
-	public ShopItemData getItem() throws SQLException
+	public ShopItemData getItem(String playername, CCommandID itemId) throws SQLException
 	{
+		ShopItemData shopItemData = null;
 		PreparedStatement ps = getPreparedStatement("selectItem");
+		ps.setString(1, playername);
+		ps.setInt   (2, itemId.getType());
+		
         ResultSet rs = ps.executeQuery();
         if(rs.next())
-        	return getItem(rs);
-		return null;
-	}
-	
-	private ShopItemData getItem(ResultSet rs) throws SQLException
-	{
-		int     id     = rs.getInt   ("id");
-    	String  nick   = rs.getString("nick");
-    	int     itemId = rs.getInt   ("item"); 
-    	String  extra  = rs.getString("extra");
-    	Timestamp exp  = rs.getTimestamp("expires");
-    	return new ShopItemData(id, CCommandID.get(itemId), nick, extra, exp);
+		{
+			int     id     = rs.getInt   ("id");
+			String  extra  = rs.getString("extra");
+			Timestamp exp  = rs.getTimestamp("expires");
+			shopItemData = new ShopItemData(id, itemId, playername, extra, exp);
+		}
+		rs.close();
+		return shopItemData;
 	}
 	
 	public void updateItem(ShopItemData item) throws SQLException
