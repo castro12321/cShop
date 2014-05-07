@@ -99,7 +99,7 @@ public class SQL extends SQLBase
 		ShopItemData shopItemData = null;
 		PreparedStatement ps = getPreparedStatement("selectItem");
 		ps.setString(1, playername);
-		ps.setInt   (2, itemId.getType());
+		ps.setInt   (2, itemId.id);
 		
         ResultSet rs = ps.executeQuery();
         if(rs.next())
