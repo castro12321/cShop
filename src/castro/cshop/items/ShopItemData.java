@@ -3,7 +3,7 @@ package castro.cshop.items;
 import java.sql.Timestamp;
 
 import castro.cshop.CCommandID;
-import castro.cshop.utils.Parser;
+import castro.cshop.utils.Time;
 
 public class ShopItemData
 {
@@ -25,12 +25,8 @@ public class ShopItemData
 	
 	public void extendHours(long extendHours, String extra)
 	{
-		long extendMillis  = Parser.hoursToMillis(extendHours);
-		long oldMillis     = expires.getTime();
-		long currentMillis = System.currentTimeMillis();
-		if(currentMillis > oldMillis)
-			oldMillis = currentMillis;
-		expires.setTime(oldMillis + extendMillis);
+		// TODO: handle change extra?
+		Time.add(expires, extendHours);
 	}
 	
 	public boolean expired()
