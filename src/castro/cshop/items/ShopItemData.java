@@ -40,6 +40,11 @@ public class ShopItemData
 		return expires;
 	}
 	
+	public ShopItem getExecutor()
+	{
+		return itemId.executor;
+	}
+	
 	public void extendHours(long extendHours) throws SQLException
 	{
 		Time.add(expires, extendHours);

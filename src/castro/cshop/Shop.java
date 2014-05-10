@@ -1,11 +1,9 @@
 package castro.cshop;
 
 import java.sql.SQLException;
-import java.sql.Timestamp;
 
 import org.bukkit.entity.Player;
 
-import castro.cshop.items.ShopItem;
 import castro.cshop.items.ShopItemData;
 import castro.cshop.utils.Time;
 
@@ -15,13 +13,12 @@ public class Shop
 	{
 		ShopItemData item = getItem(player, itemId);
 		if(item != null)
-			itemId.item.extendHours(player, item, hours);
+			itemId.executor.extendHours(player, item, hours);
 		else
 		{
-			//public void addItem(String player, CCommandID item, String extra, Timestamp expires) throws SQLException
 			Plugin.SQL.addItem(player.getName(), itemId, extra, Time.add(Time.now(), hours));
 			item = Plugin.SQL.getItem(player.getName(), itemId);
-			item.buy();
+			item.getExecutor().giveItem(player, item);
 		}
 	}
 	

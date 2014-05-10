@@ -61,12 +61,12 @@ public enum CCommandID
 	DUNNO_INFINITE_REMOVE_LATER_xD(-42, null);
 	
 	public final int id;
-	public final ShopItem item;
+	public final ShopItem executor;
 	
 	private CCommandID(int id, ShopItem item)
 	{
 		this.id   = id;
-		this.item = item;
+		this.executor = item;
 	}
 	
 	private static HashMap<Integer, CCommandID> byID = new HashMap<>();
