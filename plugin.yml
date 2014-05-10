@@ -1,0 +1,10 @@
+name: cshop
+version: 0.1.0
+main: castro.ctools.Plugin
+depend: [Vault, Base_cPlugin, Multiverse-Core, WorldGuard, WorldEdit]
+commands:
+  cshop:
+  buy:
+    description: 
+    aliases: [kup]
+    usage: /<command> <item> [time] [extra info]

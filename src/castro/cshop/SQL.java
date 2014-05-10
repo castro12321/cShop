@@ -33,7 +33,7 @@ public class SQL extends SQLBase
 {
 	private static Plugin plugin = Plugin.get;
 	
-	private final String TABLENAME = "cshop_bought";
+	private final String TABLENAME = "cshop_active";
 	
 	
 	public SQL()
@@ -46,9 +46,8 @@ public class SQL extends SQLBase
 			conn.createStatement().executeUpdate(
 					  "CREATE TABLE IF NOT EXISTS "+TABLENAME+"("
 					+ "id      INT           NOT NULL AUTO_INCREMENT, "
-					+ "nick    VARCHAR(20)   NOT NULL, "
+					+ "nick    VARCHAR(16)   NOT NULL, "
 					+ "item    INT           NOT NULL, "
-					+ "active  INT(1)        NOT NULL, "
 					+ "extra   VARCHAR(255)  NOT NULL, "
 					+ "expires TIMESTAMP     NOT NULL, "
 					+ "PRIMARY KEY(id), "

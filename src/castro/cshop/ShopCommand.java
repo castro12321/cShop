@@ -73,6 +73,6 @@ public class ShopCommand extends BaseCCommand
 	
 	
 	@Override public    boolean  onlyPlayer()        { return true; }
-	@Override protected int      minArgs()           { return 1; } // Item id, time
+	@Override protected int      minArgs()           { return 1; } // /buy <item> [time] [extra info]
 	@Override protected String[] neededPermissions() { return null; }
 }
