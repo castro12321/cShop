@@ -34,25 +34,27 @@ public class ShopCommand extends BaseCCommand
 	@Override
 	protected final boolean prepare()
 	{
+		String cmd = args[0];
+		
 		switch(args.length)
 		{
 		case 3: // /buy <item> <extra> <time>
-			item  = CCommandID.get(args[0], args[1]);
 			extra = args[1];
 			hours = Parser.parseHours(args[2]);
 			break;
 			
 		case 2: // /buy <item> <<extra>/<time>>
-			item  = CCommandID.get(args[0], null);
+			extra = args[1];
 			hours = Parser.parseHours(args[1]);
-			if(hours <= 0)
-				extra = args[1];
 			break;
 			
 		case 1: // /buy <item>
-			item = CCommandID.get(args[0], null);
+			extra = "";
+			hours = 0;
 			break;
 		}
+		
+		item = CCommandID.get(cmd, extra);
 		
 		return item != null;
 	}
