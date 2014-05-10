@@ -133,7 +133,7 @@ public class SQL extends SQLBase
 	{
 		addStatementSQL("selectExpiredItems",
 				  " SELECT * FROM "+TABLENAME
-				+ " WHERE CURRENT_DATE > expires" 
+				+ " WHERE CURRENT_TIMESTAMP > expires" 
 				);
 		
 		addStatementSQL("insertItem",
