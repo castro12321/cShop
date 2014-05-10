@@ -17,12 +17,7 @@
 
 package castro.cshop;
 
-import net.milkbowl.vault.economy.Economy;
-import net.milkbowl.vault.permission.Permission;
-
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.RegisteredServiceProvider;
-import org.bukkit.plugin.ServicesManager;
 
 import castro.base.plugin.CPlugin;
 import castro.base.plugin.CPluginSettings;
@@ -32,9 +27,6 @@ public class Plugin extends CPlugin
 	public static Plugin get;
 	public static SQL SQL;
 	public static Shop shop;
-	
-	public static Permission permission;
-	public static Economy economy;
 	
 	
 	@Override
@@ -53,14 +45,6 @@ public class Plugin extends CPlugin
 	@Override
 	protected void init()
 	{
-		ServicesManager services = getServer().getServicesManager();
-		RegisteredServiceProvider<Economy> economyProvider = services.getRegistration(net.milkbowl.vault.economy.Economy.class);
-		if (economyProvider != null)
-			economy = economyProvider.getProvider();
-		RegisteredServiceProvider<Permission> permissionProvider = services.getRegistration(net.milkbowl.vault.permission.Permission.class);
-		if (permissionProvider != null)
-			permission = permissionProvider.getProvider();
-		
 		SQL  = new SQL();
 		shop = new Shop();
 	}
