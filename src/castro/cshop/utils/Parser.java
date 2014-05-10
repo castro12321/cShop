@@ -19,7 +19,7 @@ public class Parser
 		try
 		{
 			String multiplier = time.substring(time.length()-1);
-			String timeString = time.substring(0, time.length()-2);
+			String timeString = time.substring(0, time.length()-1);
 			int    timeValue  = CUtils.convert(timeString, Integer.class, 0);
 			switch(multiplier)
 			{
