@@ -35,6 +35,11 @@ public class ShopItemData
 		Plugin.SQL.updateItem(this);
 	}
 	
+	public Timestamp getExpires()
+	{
+		return expires;
+	}
+	
 	public void extendHours(long extendHours) throws SQLException
 	{
 		Time.add(expires, extendHours);

@@ -1,7 +1,5 @@
 package castro.cshop.items;
 
-import java.sql.SQLException;
-
 import org.bukkit.entity.Player;
 
 public abstract class ShopItemSingleUse extends ShopItem

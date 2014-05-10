@@ -1,5 +1,7 @@
 package castro.cshop.items;
 
+import org.bukkit.entity.Player;
+
 import castro.base.Plugin;
 
 public abstract class ShopItemCommand extends ShopItem
@@ -8,10 +10,10 @@ public abstract class ShopItemCommand extends ShopItem
 	public abstract String getTakeCommand();
 	
 	@Override
-	public boolean giveItem(String playername, ShopItemData itemData)
+	public boolean giveItem(Player player, ShopItemData itemData)
 	{
 		String command = getGiveCommand()
-				.replace("$target$", playername);
+				.replace("$target$", player.getName());
 		return Plugin.dispatchConsoleCommand(command);
 	}
 	

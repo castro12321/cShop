@@ -116,8 +116,8 @@ public class SQL extends SQLBase
 	public void updateItem(ShopItemData item) throws SQLException
 	{
 		PreparedStatement prep = getPreparedStatement("updateItem");
-		prep.setString   (1, item.extra);
-		prep.setTimestamp(2, item.expires);
+		prep.setString   (1, item.getExtra());
+		prep.setTimestamp(2, item.getExpires());
 		prep.setInt      (3, item.dbId);
 		prep.executeUpdate();
 	}
