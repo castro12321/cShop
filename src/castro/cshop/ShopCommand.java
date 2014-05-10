@@ -17,12 +17,15 @@
 
 package castro.cshop;
 
+import java.sql.SQLException;
+
 import castro.base.BaseCCommand;
 import castro.cshop.utils.Parser;
 
 // /buy <item> [extra] <timehours>
 public class ShopCommand extends BaseCCommand
 {
+	protected final Plugin plugin = Plugin.get;
 	protected CCommandID item;
 	protected String     extra;
 	protected int        hours;
@@ -58,7 +61,13 @@ public class ShopCommand extends BaseCCommand
 	@Override
 	protected boolean execute()
 	{
-		Plugin.shop.buy(senderPlayer, item, hours, extra);
+		try
+		{
+			Plugin.shop.buy(senderPlayer, item, hours, extra);
+		}
+		catch(SQLException e)
+		{
+		}
 		return true;
 	}
 	

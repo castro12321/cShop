@@ -11,15 +11,17 @@ import castro.cshop.utils.Time;
 
 public class Shop
 {
-	public void buy(Player player, CCommandID itemId, long hours, String extra)
+	public void buy(Player player, CCommandID itemId, long hours, String extra) throws SQLException
 	{
 		ShopItemData item = getItem(player, itemId);
 		if(item != null)
-			item.extendHours(hours, extra);
+			itemId.item.extendHours(player, item, hours);
 		else
 		{
 			//public void addItem(String player, CCommandID item, String extra, Timestamp expires) throws SQLException
-			item = Plugin.SQL.addItem(player.getName(), itemId, extra, Time.add(Time.now(), hours));
+			Plugin.SQL.addItem(player.getName(), itemId, extra, Time.add(Time.now(), hours));
+			item = Plugin.SQL.getItem(player.getName(), itemId);
+			item.buy();
 		}
 	}
 	

@@ -1,5 +1,9 @@
 package castro.cshop.items;
 
+import java.sql.SQLException;
+
+import org.bukkit.entity.Player;
+
 import castro.base.Plugin;
 
 public abstract class ShopItemPermission extends ShopItem
@@ -8,9 +12,9 @@ public abstract class ShopItemPermission extends ShopItem
 	
 	
 	@Override
-	public boolean giveItem(String playername, ShopItemData itemData)
+	public boolean giveItem(Player player, ShopItemData itemData)
 	{
-		return Plugin.permissions.playerAdd((String)null, playername, getPermission());
+		return Plugin.permissions.playerAdd((String)null, player.getName(), getPermission());
 	}
 	
 	
@@ -18,5 +22,20 @@ public abstract class ShopItemPermission extends ShopItem
 	public boolean takeItem(String playername, ShopItemData itemData)
 	{
 		return Plugin.permissions.playerRemove((String)null, playername, getPermission());
+	}
+	
+	
+	@Override
+	public boolean extendHours(Player player, ShopItemData itemData, long hours)
+	{
+		try
+		{
+			itemData.extendHours(hours);
+		}
+		catch(SQLException e)
+		{
+			return false;
+		}
+		return true;
 	}
 }
