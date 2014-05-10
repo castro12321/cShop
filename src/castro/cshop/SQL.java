@@ -23,7 +23,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import castro.base.data.SQLBase;
@@ -121,15 +120,13 @@ public class SQL extends SQLBase
 		prep.executeUpdate();
 	}
 	
-	public void deleteItems(Collection<ShopItemData> toDelete) throws SQLException
+	
+	public void deleteItem(ShopItemData toDelete) throws SQLException
 	{
-		for(ShopItemData item : toDelete)
-		{
-			int id = item.dbId;
-			PreparedStatement prep = getPreparedStatement("deleteItem");
-			prep.setInt(1, id);
-			prep.executeUpdate();
-		}
+		int id = toDelete.dbId;
+		PreparedStatement prep = getPreparedStatement("deleteItem");
+		prep.setInt(1, id);
+		prep.executeUpdate();
 	}
 	
 	public void prepareStatements()
