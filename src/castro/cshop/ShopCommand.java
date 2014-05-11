@@ -55,7 +55,7 @@ public class ShopCommand extends BaseCCommand
 		}
 		
 		item = CCommandID.get(cmd, extra);
-		
+		Plugin.get.broadcast("cmd: " + cmd + " " + item + " " + hours + " " + extra);
 		return item != null;
 	}
 	

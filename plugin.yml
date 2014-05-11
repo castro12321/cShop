@@ -7,4 +7,4 @@ commands:
   buy:
     description: 
     aliases: [kup]
-    usage: /<command> <item> [time] [extra info]
+    usage: /<command> <item> [extra info] [time]

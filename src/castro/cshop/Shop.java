@@ -48,6 +48,8 @@ public class Shop implements Runnable
         {
 	        e.printStackTrace();
         }
+        if(expired.size() > 0)
+        	Plugin.get.broadcast("shop run! " + expired.size());
         
         for(ShopItemData itemdata : expired)
 			if(itemdata.getExecutor().takeItem(itemdata.owner, itemdata))
