@@ -31,6 +31,7 @@ public class Shop implements Runnable
 			}
 			catch(Exception e)
 			{
+				e.printStackTrace();
 				Plugin.SQL.deleteItem(item);
 			}
 		}
