@@ -17,9 +17,13 @@
 
 package castro.cshop;
 
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+
+import castro.cshop.items.NickColor;
 
 public class EventListener implements Listener
 {
@@ -29,5 +33,17 @@ public class EventListener implements Listener
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent event)
 	{
+		final Player player = event.getPlayer();
+		if(player.hasPermission("cshop.nick.expired"))
+			Plugin.permissions.playerRemove((String)null, player.getName(), NickColor.expiredPermission);
+	}
+	
+	
+	@EventHandler
+	public void onPlayerChat(AsyncPlayerChatEvent event)
+	{
+		final Player player = event.getPlayer();
+		if(player.hasPermission("cshop.nick.expired"))
+			Plugin.permissions.playerRemove((String)null, player.getName(), NickColor.expiredPermission);
 	}
 }
