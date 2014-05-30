@@ -7,7 +7,7 @@ public class PlotSizeDouble extends ShopItemPermission
 	@Override
     public String getPermission()
 	{
-		return "cworlds.plotsize.double";
+		return "cworlds.limit.double";
     }
 	
 	@Override

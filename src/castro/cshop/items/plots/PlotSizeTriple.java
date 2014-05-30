@@ -7,7 +7,7 @@ public class PlotSizeTriple extends ShopItemPermission
 	@Override
     public String getPermission()
 	{
-		return "cworlds.plotsize.triple";
+		return "cworlds.limit.triple";
     }
 	
 	@Override

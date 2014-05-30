@@ -7,7 +7,7 @@ public class PlotSizePlus10 extends ShopItemPermission
 	@Override
     public String getPermission()
 	{
-		return "cworlds.plotsize.plus10";
+		return "cworlds.limit.plus10";
     }
 	
 	@Override
