@@ -1,6 +1,6 @@
 package castro.cshop.items.plots;
 
-import castro.shop.items.base.ShopItemPermission;
+import castro.cshop.items.base.ShopItemPermission;
 
 abstract class AdditionalPlot extends ShopItemPermission
 {

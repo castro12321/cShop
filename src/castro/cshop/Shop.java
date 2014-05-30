@@ -6,8 +6,8 @@ import java.util.List;
 
 import org.bukkit.entity.Player;
 
+import castro.cshop.items.base.ShopItemData;
 import castro.cshop.utils.Time;
-import castro.shop.items.base.ShopItemData;
 
 public class Shop implements Runnable
 {

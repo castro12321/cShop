@@ -1,4 +1,4 @@
-package castro.shop.items.base;
+package castro.cshop.items.base;
 
 import java.sql.SQLException;
 import java.sql.Timestamp;

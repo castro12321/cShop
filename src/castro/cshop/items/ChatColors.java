@@ -1,6 +1,6 @@
 package castro.cshop.items;
 
-import castro.shop.items.base.ShopItemPermission;
+import castro.cshop.items.base.ShopItemPermission;
 
 public class ChatColors extends ShopItemPermission
 {

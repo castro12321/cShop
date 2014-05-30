@@ -1,6 +1,6 @@
 package castro.cshop.items.worldedit;
 
-import castro.shop.items.base.ShopItemPermission;
+import castro.cshop.items.base.ShopItemPermission;
 
 public class WorldEditLimitTriple extends ShopItemPermission
 {
