@@ -20,43 +20,62 @@ package castro.cshop;
 import java.util.HashMap;
 import java.util.NoSuchElementException;
 
-import castro.cshop.items.ShopItem;
-import castro.cshop.items.WorldEditLimitDouble;
+import castro.cshop.items.plots.AdditionalPlot10;
+import castro.cshop.items.plots.AdditionalPlot2;
+import castro.cshop.items.plots.AdditionalPlot3;
+import castro.cshop.items.plots.AdditionalPlot4;
+import castro.cshop.items.plots.AdditionalPlot5;
+import castro.cshop.items.plots.AdditionalPlot6;
+import castro.cshop.items.plots.AdditionalPlot7;
+import castro.cshop.items.plots.AdditionalPlot8;
+import castro.cshop.items.plots.AdditionalPlot9;
+import castro.cshop.items.plots.MobLimit100;
+import castro.cshop.items.plots.MobLimit250;
+import castro.cshop.items.plots.MobLimit500;
+import castro.cshop.items.plots.PlotSizeDouble;
+import castro.cshop.items.plots.PlotSizePlus10;
+import castro.cshop.items.plots.PlotSizePlus25;
+import castro.cshop.items.plots.PlotSizeTriple;
+import castro.cshop.items.worldedit.WorldEditLimit100k;
+import castro.cshop.items.worldedit.WorldEditLimit2m;
+import castro.cshop.items.worldedit.WorldEditLimit500k;
+import castro.cshop.items.worldedit.WorldEditLimitDouble;
+import castro.cshop.items.worldedit.WorldEditLimitTriple;
+import castro.shop.items.base.ShopItem;
 
 
 
 public enum CCommandID
 {
-	/*
 	// 0..100 <--- random items
-	MOB_LIMIT      (3),
+	
 	
 	// 100..1000 <--- plot related
-	PLOT2   (102),
-	PLOT3   (103),
-	PLOT4   (104),
-	PLOT5   (105),
-	PLOT6   (106),
-	PLOT7   (107),
-	PLOT8   (108),
-	PLOT9   (109),
-	PLOT10  (110),
+	PLOT2   (102, new AdditionalPlot2()),
+	PLOT3   (103, new AdditionalPlot3()),
+	PLOT4   (104, new AdditionalPlot4()),
+	PLOT5   (105, new AdditionalPlot5()),
+	PLOT6   (106, new AdditionalPlot6()),
+	PLOT7   (107, new AdditionalPlot7()),
+	PLOT8   (108, new AdditionalPlot8()),
+	PLOT9   (109, new AdditionalPlot9()),
+	PLOT10  (110, new AdditionalPlot10()),
 	
-	PLOT_SIZE_DOUBLE (201),
-	PLOT_SIZE_TRIPLE (202),
-	PLOT_SIZE_PLUS_10(205),
-	PLOT_SIZE_PLUS_25(204),
+	PLOT_SIZE_DOUBLE (201, new PlotSizeDouble()),
+	PLOT_SIZE_TRIPLE (202, new PlotSizeTriple()),
+	PLOT_SIZE_PLUS_10(205, new PlotSizePlus10()),
+	PLOT_SIZE_PLUS_25(204, new PlotSizePlus25()),
 	
-	MOB_LIMIT_100    (301),
-	MOB_LIMIT_250    (302),
-	MOB_LIMIT_500    (303),
-	*/
+	MOB_LIMIT_100    (301, new MobLimit100()),
+	MOB_LIMIT_250    (302, new MobLimit250()),
+	MOB_LIMIT_500    (303, new MobLimit500()),
+	
 	// 1000..? <--- other
 	WE_LIMIT_DOUBLE  (1001, new WorldEditLimitDouble()),
-	//WE_LIMIT_TRIPLE  (1002),
-	//WE_LIMIT_100k    (1003),
-	//WE_LIMIT_500k    (1004),
-	//WE_LIMIT_2m      (1005),
+	WE_LIMIT_TRIPLE  (1002, new WorldEditLimitTriple()),
+	WE_LIMIT_100k    (1003, new WorldEditLimit100k()),
+	WE_LIMIT_500k    (1004, new WorldEditLimit500k()),
+	WE_LIMIT_2m      (1005, new WorldEditLimit2m()),
 	
 	DUNNO_INFINITE_REMOVE_LATER_xD(-42, null);
 	

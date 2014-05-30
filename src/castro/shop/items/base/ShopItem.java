@@ -1,4 +1,4 @@
-package castro.cshop.items;
+package castro.shop.items.base;
 
 import org.bukkit.entity.Player;
 

@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import castro.base.data.SQLBase;
-import castro.cshop.items.ShopItemData;
+import castro.shop.items.base.ShopItemData;
 
 public class SQL extends SQLBase 
 {
