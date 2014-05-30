@@ -1,4 +1,6 @@
-package castro.cshop.items;
+package castro.cshop.items.worldedit;
+
+import castro.shop.items.base.ShopItemPermission;
 
 public class WorldEditLimitDouble extends ShopItemPermission
 {
@@ -11,7 +13,7 @@ public class WorldEditLimitDouble extends ShopItemPermission
 	@Override
     public float getPricePerHour()
     {
-		float perDay = 100;
+		final float perDay = 100;
 		return perDay/24;
     }
 }
