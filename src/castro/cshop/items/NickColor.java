@@ -34,9 +34,9 @@ public class NickColor extends ShopItem
 		return null;
 	}
 	
-	public static void setNick(Player player, String nick)
+	public static boolean setNick(Player player, String nick)
 	{
-		Plugin.dispatchConsoleCommand("nick " + player + " " + nick);
+		return Plugin.dispatchConsoleCommand("nick " + player + " " + nick);
 	}
 	
 	@Override
@@ -45,8 +45,7 @@ public class NickColor extends ShopItem
 		String color = translate(itemData.getExtra());
 		if(color == null)
 			return !plugin.sendMessage(player, "&cWrong color provided!");
-		setNick(player, color + player.getName());
-		return true;
+		return setNick(player, color + player.getName());
     }
 
 	@Override
@@ -61,7 +60,6 @@ public class NickColor extends ShopItem
 		String color = translate(itemData.getExtra());
 		if(color == null)
 			return !plugin.sendMessage(player, "&cWrong color provided!");
-		setNick(player, color + player.getName());
-		return true;
+		return setNick(player, color + player.getName());
     }
 }
