@@ -20,6 +20,11 @@ package castro.cshop;
 import java.util.HashMap;
 import java.util.NoSuchElementException;
 
+import castro.cshop.items.ChatColors;
+import castro.cshop.items.GiveHead;
+import castro.cshop.items.Hat;
+import castro.cshop.items.NickColor;
+import castro.cshop.items.Schematic;
 import castro.cshop.items.base.ShopItem;
 import castro.cshop.items.plots.AdditionalPlot10;
 import castro.cshop.items.plots.AdditionalPlot2;
@@ -48,7 +53,11 @@ import castro.cshop.items.worldedit.WorldEditLimitTriple;
 public enum CCommandID
 {
 	// 0..100 <--- random items
-	
+	CHAT_COLORS(1, new ChatColors()),
+	NICK_COLOR (2, new NickColor()),
+	GIVE_HEAD  (3, new GiveHead()),
+	HAT        (4, new Hat()),
+	SCHEMATIC  (5, new Schematic()),
 	
 	// 100..1000 <--- plot related
 	PLOT2   (102, new AdditionalPlot2()),
