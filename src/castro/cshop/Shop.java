@@ -20,14 +20,22 @@ public class Shop implements Runnable
 	public void buy(Player player, CCommandID itemId, long hours, String extra) throws SQLException
 	{
 		ShopItemData item = getItem(player, itemId);
-		if(item != null)
-			itemId.executor.extendHours(player, item, hours);
-		else
+		if(item == null)
 		{
 			Plugin.SQL.addItem(player.getName(), itemId, extra, Time.add(Time.now(), hours));
 			item = Plugin.SQL.getItem(player.getName(), itemId);
-			item.getExecutor().giveItem(player, item);
+			try
+			{
+				if(!item.getExecutor().giveItem(player, item))
+					Plugin.SQL.deleteItem(item);
+			}
+			catch(Exception e)
+			{
+				Plugin.SQL.deleteItem(item);
+			}
 		}
+		else
+			itemId.executor.extendHours(player, item, hours);
 	}
 	
 	
