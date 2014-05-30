@@ -35,7 +35,10 @@ public class EventListener implements Listener
 	{
 		final Player player = event.getPlayer();
 		if(player.hasPermission("cshop.nick.expired"))
+		{
+			NickColor.setNick(player, player.getName());
 			Plugin.permissions.playerRemove((String)null, player.getName(), NickColor.expiredPermission);
+		}
 	}
 	
 	
@@ -44,6 +47,9 @@ public class EventListener implements Listener
 	{
 		final Player player = event.getPlayer();
 		if(player.hasPermission("cshop.nick.expired"))
+		{
+			NickColor.setNick(player, player.getName());
 			Plugin.permissions.playerRemove((String)null, player.getName(), NickColor.expiredPermission);
+		}
 	}
 }
