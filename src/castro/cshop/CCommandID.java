@@ -113,12 +113,16 @@ public enum CCommandID
 		id = id.toLowerCase();
 		switch(id)
 		{
+		case "colors": return CHAT_COLORS;
+		case "nick":   return NICK_COLOR;
+		case "head":   return GIVE_HEAD;
+		case "hat":    return HAT;
+		case "schematic": return SCHEMATIC;
+		
 		case "welimit":
 			switch(extra)
 			{
 			case "double": return WE_LIMIT_DOUBLE;
-			}
-			/*
 			case "triple": return WE_LIMIT_TRIPLE;
 			case "100k"  : return WE_LIMIT_100k;
 			case "500k"  : return WE_LIMIT_500k;
@@ -137,13 +141,24 @@ public enum CCommandID
 			case "9" : return PLOT9;
 			case "10": return PLOT10;
 			}
+		case "plotsize":
+		{
+			switch(extra)
+			{
+			case "double": return PLOT_SIZE_DOUBLE;
+			case "triple": return PLOT_SIZE_TRIPLE;
+			case "plus10": return PLOT_SIZE_PLUS_10;
+			case "plus25": return PLOT_SIZE_PLUS_25;
+			}
+		}
 		case "mobs":
+		case "moblimit":
 			switch(extra)
 			{
 			case "100": return MOB_LIMIT_100;
 			case "250": return MOB_LIMIT_250;
 			case "500": return MOB_LIMIT_500;
-			}*/
+			}
 		}
 		throw new NoSuchElementException();
 	}
