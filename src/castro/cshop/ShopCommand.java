@@ -55,8 +55,12 @@ public class ShopCommand extends BaseCCommand
 		}
 		
 		item = CCommandID.get(cmd, extra);
+		if(item == null)
+			return !plugin.sendMessage(sender, "&cWrong item code");
+		if(hours < item.executor.minTime())
+			return !plugin.sendMessage(sender, "&cToo short time");
 		Plugin.get.broadcast("cmd: " + cmd + " " + item + " " + hours + " " + extra);
-		return item != null;
+		return true;
 	}
 	
 	
