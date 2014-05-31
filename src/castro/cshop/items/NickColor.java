@@ -34,7 +34,7 @@ public class NickColor extends ShopItem
 	
 	public static boolean setNick(Player player, String nick)
 	{
-		return Plugin.dispatchConsoleCommand("nick " + player + " " + nick);
+		return Plugin.dispatchConsoleCommand("nick " + player.getName() + " " + nick);
 	}
 	
 	@Override
