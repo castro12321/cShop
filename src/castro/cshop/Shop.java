@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.bukkit.entity.Player;
 
+import castro.cshop.items.base.ShopItem;
 import castro.cshop.items.base.ShopItemData;
 import castro.cshop.utils.Time;
 
@@ -26,7 +27,8 @@ public class Shop implements Runnable
 			item = Plugin.SQL.getItem(player.getName(), itemId);
 			try
 			{
-				if(!item.getExecutor().giveItem(player, item))
+				ShopItem executor = item.getExecutor();
+				if(!executor.giveItem(player, item) || executor.singleUse())
 					Plugin.SQL.deleteItem(item);
 			}
 			catch(Exception e)

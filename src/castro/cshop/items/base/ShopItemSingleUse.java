@@ -17,7 +17,7 @@ public abstract class ShopItemSingleUse extends ShopItem
 	@Override
 	public boolean takeItem(String playername, ShopItemData itemData)
 	{
-		return true; // SingleUse items decay automatically, don't need to remove it
+		throw new UnsupportedOperationException("Cannot take single use item");
 	}
 	
 	
@@ -25,5 +25,12 @@ public abstract class ShopItemSingleUse extends ShopItem
 	public boolean extendHours(Player player, ShopItemData itemData, long hours)
 	{
 		throw new UnsupportedOperationException("Cannot extend single use item");
+	}
+	
+	
+	@Override
+	public boolean singleUse()
+	{
+		return true;
 	}
 }
