@@ -13,10 +13,14 @@ public class VIP extends ShopItem
 	@Override
     public float getPricePerHour()
     {
-	    final float perMonth = 5000;
-	    final float perDay   = perMonth / 30;
-	    return perDay / 24;
+		return 5000 / month;
     }
+	
+	@Override
+	public int minTime()
+	{
+		return 7*day;
+	}
 	
 	
 	@Override

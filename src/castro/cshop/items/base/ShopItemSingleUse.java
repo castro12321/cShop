@@ -33,4 +33,11 @@ public abstract class ShopItemSingleUse extends ShopItem
 	{
 		return true;
 	}
+	
+	
+	@Override
+	public int minTime()
+	{
+		return 0;
+	}
 }

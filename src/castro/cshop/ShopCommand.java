@@ -50,13 +50,13 @@ public class ShopCommand extends BaseCCommand
 			
 		case 1: // /buy <item>
 			extra = "";
-			hours = 1;
+			hours = 0;
 			break;
 		}
 		
 		item = CCommandID.get(cmd, extra);
 		Plugin.get.broadcast("cmd: " + cmd + " " + item + " " + hours + " " + extra);
-		return item != null && hours >= 1;
+		return item != null;
 	}
 	
 	

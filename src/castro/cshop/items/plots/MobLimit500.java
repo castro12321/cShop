@@ -13,8 +13,6 @@ public class MobLimit500 extends ShopItemPermission
 	@Override
     public float getPricePerHour()
     {
-		final float perMonth = 5000;
-		final float perDay   = perMonth / 30;
-		return perDay / 24;
+		return 5000 / month;
     }
 }

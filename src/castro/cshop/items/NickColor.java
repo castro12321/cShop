@@ -17,9 +17,7 @@ public class NickColor extends ShopItem
 	@Override
     public float getPricePerHour()
     {
-	    final float perMonth = 1000;
-	    final float perDay   = perMonth / 30;
-	    return perDay / 24;
+		return 1000 / month;
     }
 	
 	private final static List<Character> whitelistedColors = Arrays.asList('a', 'b', 'c', 'd', 'e', 'f', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9');

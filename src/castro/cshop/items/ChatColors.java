@@ -13,8 +13,13 @@ public class ChatColors extends ShopItemPermission
 	@Override
     public float getPricePerHour()
     {
-	    final float perMonth = 3000;
-	    final float perDay   = perMonth / 30;
-	    return perDay / 24;
+		return 3000 / month;
     }
+	
+	
+	@Override
+	public int minTime()
+	{
+		return 24*hour;
+	}
 }
