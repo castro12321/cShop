@@ -15,12 +15,12 @@ public class Hat extends ShopItemSingleUse
 	    return 50;
     }
 	
-
-	@Override
+	
+    @Override
     public boolean giveItem(Player player, ShopItemData itemData)
     {
 		ItemStack hand   = player.getItemInHand();
-		if(hand.getTypeId() < 1 || hand.getTypeId() > 250)
+		if(!hand.getType().isBlock())
 			return !plugin.sendMessage(player, "&cYou must have block in hand");
 		
 		PlayerInventory inventory = player.getInventory();

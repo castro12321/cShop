@@ -73,6 +73,7 @@ public class ShopCommand extends BaseCCommand
 		}
 		catch(SQLException e)
 		{
+			e.printStackTrace();
 		}
 		return true;
 	}
