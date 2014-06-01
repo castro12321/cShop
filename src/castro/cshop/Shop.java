@@ -18,33 +18,75 @@ public class Shop implements Runnable
 		Plugin.get.scheduleSyncRepeatingTask(this, 3*second, 3*second);
 	}
 	
-	public void buy(Player player, CCommandID itemId, long hours, String extra) throws SQLException
+	public boolean buy(Player player, CCommandID itemId, long hours, String extra)
 	{
-		ShopItemData item = getItem(player, itemId);
+		String playername = player.getName();
+		
+		Plugin.get.log("smgr buy " + itemId + " for " + playername + " for " + hours + "h; extra: " + extra);
+		
+		if(!Economy.canAfford(playername, itemId, hours))
+			return !Plugin.get.sendMessage(player, "&cYou don't have enough cash");
+		
+		ShopItemData item = getOrCreateItem(playername, itemId, hours, extra);
 		if(item == null)
+			return Plugin.get.sendMessage(playername, "&cGot error while querying for item. Please contact an administrator.");
+		
+		ShopItem executor = itemId.executor;
+		if(executor.singleUse())
 		{
-			Plugin.SQL.addItem(player.getName(), itemId, extra, Time.add(Time.now(), hours));
-			item = Plugin.SQL.getItem(player.getName(), itemId);
-			try
+			Plugin.get.log("Single use item!");
+			if(!executor.giveItem(player, item))
+				return !Plugin.get.sendMessage(player, "&cCannot give the item. Please contact an administrator");
+		}
+		else if(item.isNew())
+		{
+			Plugin.get.log("no previous item. Creating one");
+			
+			if(!Plugin.SQL.addItem(playername, itemId, extra, item.expires()))
+				return !Plugin.get.sendMessage(player, "&cCannot query database. Please contact an administrator");
+			if(!executor.giveItem(player, item))
 			{
-				ShopItem executor = item.getExecutor();
-				if(!executor.giveItem(player, item) || executor.singleUse())
-					Plugin.SQL.deleteItem(item);
-			}
-			catch(Exception e)
-			{
-				e.printStackTrace();
-				Plugin.SQL.deleteItem(item);
+				if(!Plugin.SQL.deleteItem(playername, itemId))
+					Plugin.get.sendMessage(player, "&cCannot query delete from database. Please contact an administrator");
+				return !Plugin.get.sendMessage(player, "&cCannot give the item. Please contact an administrator");
 			}
 		}
 		else
-			itemId.executor.extendHours(player, item, hours);
+		{
+			Plugin.get.log("Updating item");
+			if(Plugin.SQL.updateItem(item))
+				executor.update(player, item);
+			else
+				return !Plugin.get.sendMessage(player, "&cCannot query database. Please contact an administrator");
+		}
+		
+		if(Economy.charge(playername, itemId, hours))
+			return Plugin.get.sendMessage(player, "&aThere you go");
+		return Plugin.get.sendMessage(player, "&cSomething wen't wrong while charging. Please contact an administrator");
 	}
 	
-	
-	private ShopItemData getItem(Player player, CCommandID id) throws SQLException
+	private ShopItemData getOrCreateItem(String playername, CCommandID itemId, long hours, String extra)
 	{
-		return Plugin.SQL.getItem(player.getName(), id);
+		ShopItemData item = null;
+		
+		if(!itemId.executor.singleUse())
+		{
+			try
+			{
+				item = Plugin.SQL.getItem(playername, itemId);
+			}
+			catch(SQLException e)
+			{
+				e.printStackTrace();
+				return null;
+			}
+		}
+		
+		if(item == null)
+			item = new ShopItemData(0, itemId, playername, extra, Time.now());
+		item.extra = extra;
+		item.extendHours(hours);
+		return item;
 	}
 	
 	@Override
@@ -64,13 +106,6 @@ public class Shop implements Runnable
         
         for(ShopItemData itemdata : expired)
 			if(itemdata.getExecutor().takeItem(itemdata.owner, itemdata))
-				try
-		        {
-			        Plugin.SQL.deleteItem(itemdata);
-		        }
-		        catch(SQLException e)
-		        {
-			        e.printStackTrace();
-		        }
+				Plugin.SQL.deleteItem(itemdata);
 	}
 }

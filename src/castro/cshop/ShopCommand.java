@@ -17,7 +17,7 @@
 
 package castro.cshop;
 
-import java.sql.SQLException;
+import java.util.NoSuchElementException;
 
 import castro.base.BaseCCommand;
 import castro.cshop.utils.Parser;
@@ -54,9 +54,14 @@ public class ShopCommand extends BaseCCommand
 			break;
 		}
 		
-		item = CCommandID.get(cmd, extra);
-		if(item == null)
+		try
+		{
+			item = CCommandID.get(cmd, extra);
+		}
+		catch(NoSuchElementException e)
+		{
 			return !plugin.sendMessage(sender, "&cWrong item code");
+		}
 		if(hours < item.executor.minTime())
 			return !plugin.sendMessage(sender, "&cToo short time");
 		Plugin.get.broadcast("cmd: " + cmd + " " + item + " " + hours + " " + extra);
@@ -67,15 +72,7 @@ public class ShopCommand extends BaseCCommand
 	@Override
 	protected boolean execute()
 	{
-		try
-		{
-			Plugin.shop.buy(senderPlayer, item, hours, extra);
-		}
-		catch(SQLException e)
-		{
-			e.printStackTrace();
-		}
-		return true;
+		return Plugin.shop.buy(senderPlayer, item, hours, extra);
 	}
 	
 	
