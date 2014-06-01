@@ -43,4 +43,10 @@ public class ShopItemData
 		long currentMillis = System.currentTimeMillis();
 		return currentMillis > expiresMillis;
 	}
+	
+	
+	public boolean isNew()
+	{
+		return dbId == 0;
+	}
 }
