@@ -83,16 +83,36 @@ public class SQL extends SQLBase
 	}
 	
 	
-	public void addItem(String player, CCommandID item, String extra, Timestamp expires) throws SQLException
+	public boolean addItem(String player, CCommandID item, String extra, Timestamp expires)
 	{
-		PreparedStatement prep = getPreparedStatement("insertItem");
-		prep.setString   (1, player);
-		prep.setInt      (2, item.id);
-		prep.setString   (3, extra);
-		prep.setTimestamp(4, expires);
-		prep.executeUpdate();
+		try
+		{
+			PreparedStatement prep = getPreparedStatement("insertItem");
+			prep.setString   (1, player);
+			prep.setInt      (2, item.id);
+			prep.setString   (3, extra);
+			prep.setTimestamp(4, expires);
+			prep.executeUpdate();
+			return true;
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+			return false;
+		}
 	}
 	
+	public ShopItemData getItemOrNull(String playername, CCommandID itemId)
+	{
+		try
+		{
+			return getItem(playername, itemId);
+		}
+		catch(Exception e)
+		{
+			return null;
+		}
+	}
 	public ShopItemData getItem(String playername, CCommandID itemId) throws SQLException
 	{
 		ShopItemData shopItemData = null;
@@ -112,22 +132,46 @@ public class SQL extends SQLBase
 		return shopItemData;
 	}
 	
-	public void updateItem(ShopItemData item) throws SQLException
+	public boolean updateItem(ShopItemData item)
 	{
-		PreparedStatement prep = getPreparedStatement("updateItem");
-		prep.setString   (1, item.extra);
-		prep.setTimestamp(2, item.expires());
-		prep.setInt      (3, item.dbId);
-		prep.executeUpdate();
+		try
+		{
+    		PreparedStatement prep = getPreparedStatement("updateItem");
+    		prep.setString   (1, item.extra);
+    		prep.setTimestamp(2, item.expires());
+    		prep.setInt      (3, item.dbId);
+    		prep.executeUpdate();
+    		return true;
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+			return false;
+		}
 	}
 	
-	
-	public void deleteItem(ShopItemData toDelete) throws SQLException
+	public boolean deleteItem(String playername, CCommandID itemId)
 	{
-		int id = toDelete.dbId;
-		PreparedStatement prep = getPreparedStatement("deleteItem");
-		prep.setInt(1, id);
-		prep.executeUpdate();
+		ShopItemData item = getItemOrNull(playername, itemId);
+		if(item != null)
+			return deleteItem(item);
+		return false;
+	}
+	public boolean deleteItem(ShopItemData toDelete)
+	{
+		try
+		{
+    		int id = toDelete.dbId;
+    		PreparedStatement prep = getPreparedStatement("deleteItem");
+    		prep.setInt(1, id);
+    		prep.executeUpdate();
+    		return true;
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+			return false;
+		}
 	}
 	
 	public void prepareStatements()
@@ -148,8 +192,8 @@ public class SQL extends SQLBase
 				);
 		
 		addStatementSQL("updateItem",
-				  " UPDATE TABLE "+TABLENAME
-				+ " SET extra=? expires=?"
+				  " UPDATE "+TABLENAME
+				+ " SET extra=?, expires=?"
 				+ " WHERE id=?"
 				);
 		
