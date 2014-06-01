@@ -40,7 +40,7 @@ public class NickColor extends ShopItem
 	@Override
     public boolean giveItem(Player player, ShopItemData itemData)
     {
-		String color = translate(itemData.getExtra());
+		String color = translate(itemData.extra);
 		if(color == null)
 			return !plugin.sendMessage(player, "&cWrong color provided!");
 		return setNick(player, color + player.getName());
@@ -53,9 +53,9 @@ public class NickColor extends ShopItem
     }
 
 	@Override
-    public boolean extendHours(Player player, ShopItemData itemData, long hours)
+    public boolean update(Player player, ShopItemData itemData)
     {
-		String color = translate(itemData.getExtra());
+		String color = translate(itemData.extra);
 		if(color == null)
 			return !plugin.sendMessage(player, "&cWrong color provided!");
 		return setNick(player, color + player.getName());

@@ -1,7 +1,5 @@
 package castro.cshop.items.base;
 
-import java.sql.SQLException;
-
 import org.bukkit.entity.Player;
 
 import castro.base.Plugin;
@@ -26,16 +24,8 @@ public abstract class ShopItemPermission extends ShopItem
 	
 	
 	@Override
-	public boolean extendHours(Player player, ShopItemData itemData, long hours)
+	public boolean update(Player player, ShopItemData itemData)
 	{
-		try
-		{
-			itemData.extendHours(hours);
-		}
-		catch(SQLException e)
-		{
-			return false;
-		}
 		return true;
 	}
 }

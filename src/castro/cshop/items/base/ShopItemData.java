@@ -1,10 +1,8 @@
 package castro.cshop.items.base;
 
-import java.sql.SQLException;
 import java.sql.Timestamp;
 
 import castro.cshop.CCommandID;
-import castro.cshop.Plugin;
 import castro.cshop.utils.Time;
 
 public class ShopItemData
@@ -12,7 +10,7 @@ public class ShopItemData
 	public final int        dbId;
 	public final CCommandID itemId;
 	public final String     owner;
-	private String          extra;
+	public String          extra;
 	private Timestamp       expires;
 	
 	public ShopItemData(int dbId, CCommandID itemId, String owner, String extra, Timestamp expires)
@@ -24,18 +22,7 @@ public class ShopItemData
 	    this.extra   = extra;
     }
 	
-	public String getExtra()
-	{
-		return extra;
-	}
-	
-	public void setExtra(String extra) throws SQLException
-	{
-		this.extra = extra;
-		Plugin.SQL.updateItem(this);
-	}
-	
-	public Timestamp getExpires()
+	public Timestamp expires()
 	{
 		return expires;
 	}
@@ -45,10 +32,9 @@ public class ShopItemData
 		return itemId.executor;
 	}
 	
-	public void extendHours(long extendHours) throws SQLException
+	public void extendHours(long extendHours)
 	{
-		Time.add(expires, extendHours);
-		Plugin.SQL.updateItem(this);
+		expires = Time.add(expires, extendHours);
 	}
 	
 	public boolean expired()

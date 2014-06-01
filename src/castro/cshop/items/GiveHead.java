@@ -39,7 +39,7 @@ public class GiveHead extends ShopItemSingleUse
 		
 		// Link player name with skull
 		SkullMeta sm = (SkullMeta) skull.getItemMeta();
-		String desiredPlayer = itemData.getExtra();
+		String desiredPlayer = itemData.extra;
 		sm.setOwner(desiredPlayer);
 		
 		// Woozie DRM

@@ -15,7 +15,7 @@ public abstract class ShopItem
 	public abstract float getPricePerHour();
 	public abstract boolean giveItem(Player player, ShopItemData itemData);
 	public abstract boolean takeItem(String playername, ShopItemData itemData);
-	public abstract boolean extendHours(Player player, ShopItemData itemData, long hours);
+	public abstract boolean update(Player player, ShopItemData itemData);
 	
 	public boolean singleUse()
 	{

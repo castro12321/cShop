@@ -36,7 +36,7 @@ public class VIP extends ShopItem
     }
 
 	@Override
-    public boolean extendHours(Player player, ShopItemData itemData, long hours)
+    public boolean update(Player player, ShopItemData itemData)
     {
 		return true;
     }

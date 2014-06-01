@@ -22,9 +22,9 @@ public abstract class ShopItemSingleUse extends ShopItem
 	
 	
 	@Override
-	public boolean extendHours(Player player, ShopItemData itemData, long hours)
+	public boolean update(Player player, ShopItemData itemData)
 	{
-		throw new UnsupportedOperationException("Cannot extend single use item");
+		throw new UnsupportedOperationException("Cannot update single use item");
 	}
 	
 	
