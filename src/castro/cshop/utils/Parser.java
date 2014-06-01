@@ -37,7 +37,7 @@ public class Parser
 	
 	public static long hoursToMillis(long hours)
 	{
-		return millis * hour;
+		return hours * hour;
 	}
 	
 	public static long millisToHours(long millis)
