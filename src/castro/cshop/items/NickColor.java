@@ -49,6 +49,9 @@ public class NickColor extends ShopItem
 	@Override
     public boolean takeItem(String playername, ShopItemData itemData)
     {
+		Player player = Plugin.getPlayer(playername);
+		if(player != null)
+			return NickColor.setNick(player, player.getName());
 		return Plugin.permissions.playerAdd((String)null, playername, expiredPermission);
     }
 
