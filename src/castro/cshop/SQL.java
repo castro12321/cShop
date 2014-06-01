@@ -50,8 +50,7 @@ public class SQL extends SQLBase
 					+ "extra   VARCHAR(255)  NOT NULL, "
 					+ "expires TIMESTAMP     NOT NULL, "
 					+ "PRIMARY KEY(id), "
-					+ "UNIQUE(id), "
-					+ "UNIQUE(nick)"
+					+ "UNIQUE(id) "
 					+ ") ENGINE=MyIsam "
 					);
 			
