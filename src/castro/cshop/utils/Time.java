@@ -2,8 +2,6 @@ package castro.cshop.utils;
 
 import java.sql.Timestamp;
 
-import castro.cshop.Plugin;
-
 public class Time
 {
 	public static Timestamp now()

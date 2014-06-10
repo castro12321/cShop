@@ -25,6 +25,8 @@ import castro.cshop.items.GiveHead;
 import castro.cshop.items.Hat;
 import castro.cshop.items.NickColor;
 import castro.cshop.items.Schematic;
+import castro.cshop.items.VIP;
+import castro.cshop.items.VoxelSniperAccess;
 import castro.cshop.items.base.ShopItem;
 import castro.cshop.items.plots.AdditionalPlot10;
 import castro.cshop.items.plots.AdditionalPlot2;
@@ -58,6 +60,7 @@ public enum CCommandID
 	GIVE_HEAD  (3, new GiveHead()),
 	HAT        (4, new Hat()),
 	SCHEMATIC  (5, new Schematic()),
+	VIP        (6, new VIP()),
 	
 	// 100..1000 <--- plot related
 	PLOT2   (102, new AdditionalPlot2()),
@@ -79,12 +82,15 @@ public enum CCommandID
 	MOB_LIMIT_250    (302, new MobLimit250()),
 	MOB_LIMIT_500    (303, new MobLimit500()),
 	
-	// 1000..? <--- other
+	// 1000..1100 <--- WorldEdit
 	WE_LIMIT_DOUBLE  (1001, new WorldEditLimitDouble()),
 	WE_LIMIT_TRIPLE  (1002, new WorldEditLimitTriple()),
 	WE_LIMIT_100k    (1003, new WorldEditLimit100k()),
 	WE_LIMIT_500k    (1004, new WorldEditLimit500k()),
 	WE_LIMIT_2m      (1005, new WorldEditLimit2m()),
+	
+	// 1000..1200 <--- VoxelSniper
+	VS_ACCESS        (1100, new VoxelSniperAccess()),
 	
 	DUNNO_INFINITE_REMOVE_LATER_xD(-42, null);
 	
@@ -117,7 +123,9 @@ public enum CCommandID
 		case "nick":   return NICK_COLOR;
 		case "head":   return GIVE_HEAD;
 		case "hat":    return HAT;
-		case "schematic": return SCHEMATIC;
+		case "vip":    return VIP;
+		case "schematic":   return SCHEMATIC;
+		case "voxelsniper": return VS_ACCESS;
 		
 		case "welimit":
 			switch(extra)
