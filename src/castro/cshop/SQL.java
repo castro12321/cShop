@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import castro.base.data.SQLBase;
+import castro.cshop.items.base.ShopItemId;
 import castro.cshop.items.base.ShopItemData;
 
 public class SQL extends SQLBase 
@@ -75,14 +76,14 @@ public class SQL extends SQLBase
         	int     itemId = rs.getInt   ("item"); 
         	String  extra  = rs.getString("extra");
         	Timestamp exp  = rs.getTimestamp("expires");
-        	ShopItemData item  = new ShopItemData(id, CCommandID.get(itemId), nick, extra, exp);
+        	ShopItemData item  = new ShopItemData(id, ShopItemId.get(itemId), nick, extra, exp);
         	expiredItems.add(item);
         }
 		return expiredItems;
 	}
 	
 	
-	public boolean addItem(String player, CCommandID item, String extra, Timestamp expires)
+	public boolean addItem(String player, ShopItemId item, String extra, Timestamp expires)
 	{
 		try
 		{
@@ -101,7 +102,7 @@ public class SQL extends SQLBase
 		}
 	}
 	
-	public ShopItemData getItemOrNull(String playername, CCommandID itemId)
+	public ShopItemData getItemOrNull(String playername, ShopItemId itemId)
 	{
 		try
 		{
@@ -112,7 +113,7 @@ public class SQL extends SQLBase
 			return null;
 		}
 	}
-	public ShopItemData getItem(String playername, CCommandID itemId) throws SQLException
+	public ShopItemData getItem(String playername, ShopItemId itemId) throws SQLException
 	{
 		ShopItemData shopItemData = null;
 		PreparedStatement ps = getPreparedStatement("selectItem");
@@ -149,7 +150,7 @@ public class SQL extends SQLBase
 		}
 	}
 	
-	public boolean deleteItem(String playername, CCommandID itemId)
+	public boolean deleteItem(String playername, ShopItemId itemId)
 	{
 		ShopItemData item = getItemOrNull(playername, itemId);
 		if(item != null)

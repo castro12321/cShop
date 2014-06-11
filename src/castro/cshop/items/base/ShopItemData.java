@@ -2,18 +2,17 @@ package castro.cshop.items.base;
 
 import java.sql.Timestamp;
 
-import castro.cshop.CCommandID;
 import castro.cshop.utils.Time;
 
 public class ShopItemData
 {
 	public final int        dbId;
-	public final CCommandID itemId;
+	public final ShopItemId itemId;
 	public final String     owner;
 	public String          extra;
 	private Timestamp       expires;
 	
-	public ShopItemData(int dbId, CCommandID itemId, String owner, String extra, Timestamp expires)
+	public ShopItemData(int dbId, ShopItemId itemId, String owner, String extra, Timestamp expires)
     {
 		this.dbId    = dbId;
 	    this.itemId  = itemId;

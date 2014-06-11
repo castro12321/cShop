@@ -17,6 +17,7 @@
 
 package castro.cshop;
 
+import castro.cshop.items.base.ShopItemId;
 import net.milkbowl.vault.economy.EconomyResponse;
 
 public class Economy 
@@ -24,7 +25,7 @@ public class Economy
 	private static net.milkbowl.vault.economy.Economy economy = Plugin.economy;
 	
 	
-	private static double getPrice(CCommandID item, long hours)
+	private static double getPrice(ShopItemId item, long hours)
 	{
 		if(item.executor.singleUse())
 			return item.executor.getPricePerHour();
@@ -32,7 +33,7 @@ public class Economy
 	}
 	
 	
-	public static boolean canAfford(String player, CCommandID item, long hours)
+	public static boolean canAfford(String player, ShopItemId item, long hours)
 	{
 		double balance = economy.getBalance(player);
 		double price   = getPrice(item, hours);
@@ -40,7 +41,7 @@ public class Economy
 	}
 	
 	
-	public static boolean charge(String player, CCommandID item, long hours)
+	public static boolean charge(String player, ShopItemId item, long hours)
 	{
 		Plugin.get.log("Charging player");
 		double price = getPrice(item, hours);

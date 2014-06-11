@@ -20,13 +20,14 @@ package castro.cshop;
 import java.util.NoSuchElementException;
 
 import castro.base.BaseCCommand;
+import castro.cshop.items.base.ShopItemId;
 import castro.cshop.utils.Parser;
 
 // /buy <item> [extra] <timehours>
 public class ShopCommand extends BaseCCommand
 {
 	protected final Plugin plugin = Plugin.get;
-	protected CCommandID item;
+	protected ShopItemId item;
 	protected String     extra;
 	protected int        hours;
 	
@@ -56,7 +57,7 @@ public class ShopCommand extends BaseCCommand
 		
 		try
 		{
-			item = CCommandID.get(cmd, extra);
+			item = ShopItemId.get(cmd, extra);
 		}
 		catch(NoSuchElementException e)
 		{

@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.bukkit.entity.Player;
 
+import castro.cshop.items.base.ShopItemId;
 import castro.cshop.items.base.ShopItem;
 import castro.cshop.items.base.ShopItemData;
 import castro.cshop.utils.Time;
@@ -18,7 +19,7 @@ public class Shop implements Runnable
 		Plugin.get.scheduleSyncRepeatingTask(this, 3*second, 3*second);
 	}
 	
-	public boolean buy(Player player, CCommandID itemId, long hours, String extra)
+	public boolean buy(Player player, ShopItemId itemId, long hours, String extra)
 	{
 		String playername = player.getName();
 		
@@ -65,7 +66,7 @@ public class Shop implements Runnable
 		return Plugin.get.sendMessage(player, "&cSomething wen't wrong while charging. Please contact an administrator");
 	}
 	
-	private ShopItemData getOrCreateItem(String playername, CCommandID itemId, long hours, String extra)
+	private ShopItemData getOrCreateItem(String playername, ShopItemId itemId, long hours, String extra)
 	{
 		ShopItemData item = null;
 		
