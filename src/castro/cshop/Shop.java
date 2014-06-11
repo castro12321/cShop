@@ -25,6 +25,9 @@ public class Shop implements Runnable
 		
 		Plugin.get.log("smgr buy " + itemId + " for " + playername + " for " + hours + "h; extra: " + extra);
 		
+		if(hours > 24*365) // year is enough
+			return !Plugin.get.sendMessage(player, "&cToo long time");
+		
 		if(!Economy.canAfford(playername, itemId, hours))
 			return !Plugin.get.sendMessage(player, "&cYou don't have enough cash");
 		
@@ -62,7 +65,7 @@ public class Shop implements Runnable
 		}
 		
 		if(Economy.charge(playername, itemId, hours))
-			return Plugin.get.sendMessage(player, "&aThere you go");
+			return Plugin.get.sendMessage(player, "&aThere you go. Charged " + Economy.getPrice(itemId, hours));
 		return Plugin.get.sendMessage(player, "&cSomething wen't wrong while charging. Please contact an administrator");
 	}
 	
