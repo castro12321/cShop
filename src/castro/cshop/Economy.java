@@ -24,12 +24,18 @@ public class Economy
 {
 	private static net.milkbowl.vault.economy.Economy economy = Plugin.economy;
 	
-	
-	private static double getPrice(ShopItemId item, long hours)
+	private static double round2(double value)
 	{
+		return Math.round(value * 100.0) / 100.0;
+	}
+	
+	public static double getPrice(ShopItemId item, float hours)
+	{
+		double perHour = item.executor.getPricePerHour();
 		if(item.executor.singleUse())
-			return item.executor.getPricePerHour();
-		return item.executor.getPricePerHour() * (float)hours;
+			return perHour;
+		double discountModifier = getDiscountModifier(hours);
+		return round2(perHour * hours * discountModifier);
 	}
 	
 	
@@ -38,6 +44,15 @@ public class Economy
 		double balance = economy.getBalance(player);
 		double price   = getPrice(item, hours);
 		return balance >= price;
+	}
+	
+	
+	public static double getDiscountModifier(float hours)
+	{
+		double days = (double)hours / 24.d;
+		if(days > 30)
+			days = 30; // 30 days cap
+		return 1.d - (days / 100); // 1% discount per each day
 	}
 	
 	
