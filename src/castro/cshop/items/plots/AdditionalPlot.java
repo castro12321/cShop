@@ -24,7 +24,7 @@ abstract class AdditionalPlot extends ShopItemPermission
     }
 	
 	@Override
-	public int minTime()
+	public float minTime()
 	{
 		return 7*day;
 	}

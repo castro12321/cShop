@@ -17,7 +17,7 @@ public class VIP extends ShopItem
     }
 	
 	@Override
-	public int minTime()
+	public float minTime()
 	{
 		return 7*day;
 	}

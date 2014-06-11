@@ -24,7 +24,7 @@ abstract class AdditionalSave extends ShopItemPermission
     }
 	
 	@Override
-	public int minTime()
+	public float minTime()
 	{
 		return 1*day;
 	}

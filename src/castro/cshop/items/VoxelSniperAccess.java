@@ -18,7 +18,7 @@ public class VoxelSniperAccess extends ShopItemPermission
 	
 	
 	@Override
-	public int minTime()
+	public float minTime()
 	{
 		return 24*hour;
 	}

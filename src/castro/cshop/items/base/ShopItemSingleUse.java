@@ -36,7 +36,7 @@ public abstract class ShopItemSingleUse extends ShopItem
 	
 	
 	@Override
-	public int minTime()
+	public float minTime()
 	{
 		return 0;
 	}
