@@ -24,18 +24,18 @@ import castro.cshop.items.ChatColors;
 import castro.cshop.items.GiveHead;
 import castro.cshop.items.Hat;
 import castro.cshop.items.NickColor;
+import castro.cshop.items.Rabus;
 import castro.cshop.items.Schematic;
 import castro.cshop.items.VIP;
 import castro.cshop.items.VoxelSniperAccess;
-import castro.cshop.items.plots.AdditionalPlot10;
 import castro.cshop.items.plots.AdditionalPlot2;
 import castro.cshop.items.plots.AdditionalPlot3;
 import castro.cshop.items.plots.AdditionalPlot4;
 import castro.cshop.items.plots.AdditionalPlot5;
-import castro.cshop.items.plots.AdditionalPlot6;
-import castro.cshop.items.plots.AdditionalPlot7;
-import castro.cshop.items.plots.AdditionalPlot8;
-import castro.cshop.items.plots.AdditionalPlot9;
+import castro.cshop.items.plots.AdditionalSave2;
+import castro.cshop.items.plots.AdditionalSave3;
+import castro.cshop.items.plots.AdditionalSave4;
+import castro.cshop.items.plots.AdditionalSave5;
 import castro.cshop.items.plots.MobLimit100;
 import castro.cshop.items.plots.MobLimit250;
 import castro.cshop.items.plots.MobLimit500;
@@ -60,17 +60,20 @@ public enum ShopItemId
 	HAT        (4, new Hat()),
 	SCHEMATIC  (5, new Schematic()),
 	VIP        (6, new VIP()),
+	RABUS      (7, new Rabus()),
 	
 	// 100..1000 <--- plot related
 	PLOT2   (102, new AdditionalPlot2()),
 	PLOT3   (103, new AdditionalPlot3()),
 	PLOT4   (104, new AdditionalPlot4()),
 	PLOT5   (105, new AdditionalPlot5()),
+	/*
 	PLOT6   (106, new AdditionalPlot6()),
 	PLOT7   (107, new AdditionalPlot7()),
 	PLOT8   (108, new AdditionalPlot8()),
 	PLOT9   (109, new AdditionalPlot9()),
 	PLOT10  (110, new AdditionalPlot10()),
+	*/
 	
 	PLOT_SIZE_DOUBLE (201, new PlotSizeDouble()),
 	PLOT_SIZE_TRIPLE (202, new PlotSizeTriple()),
@@ -80,6 +83,11 @@ public enum ShopItemId
 	MOB_LIMIT_100    (301, new MobLimit100()),
 	MOB_LIMIT_250    (302, new MobLimit250()),
 	MOB_LIMIT_500    (303, new MobLimit500()),
+	
+	SAVE_SLOT_2 (402, new AdditionalSave2()),
+	SAVE_SLOT_3 (403, new AdditionalSave3()),
+	SAVE_SLOT_4 (404, new AdditionalSave4()),
+	SAVE_SLOT_5 (405, new AdditionalSave5()),
 	
 	// 1000..1100 <--- WorldEdit
 	WE_LIMIT_DOUBLE  (1001, new WorldEditLimitDouble()),
@@ -125,6 +133,8 @@ public enum ShopItemId
 		case "vip":    return VIP;
 		case "schematic":   return SCHEMATIC;
 		case "voxelsniper": return VS_ACCESS;
+		case "rabus":
+		case "rabusa":      return RABUS;
 		
 		case "welimit":
 			switch(extra)
@@ -142,11 +152,6 @@ public enum ShopItemId
 			case "3" : return PLOT3;
 			case "4" : return PLOT4;
 			case "5" : return PLOT5;
-			case "6" : return PLOT6;
-			case "7" : return PLOT7;
-			case "8" : return PLOT8;
-			case "9" : return PLOT9;
-			case "10": return PLOT10;
 			}
 		case "plotsize":
 		{
@@ -156,6 +161,16 @@ public enum ShopItemId
 			case "triple": return PLOT_SIZE_TRIPLE;
 			case "plus10": return PLOT_SIZE_PLUS_10;
 			case "plus25": return PLOT_SIZE_PLUS_25;
+			}
+		}
+		case "saveslot":
+		{
+			switch(extra)
+			{
+			case "2": return SAVE_SLOT_2;
+			case "3": return SAVE_SLOT_3;
+			case "4": return SAVE_SLOT_4;
+			case "5": return SAVE_SLOT_5;
 			}
 		}
 		case "mobs":
