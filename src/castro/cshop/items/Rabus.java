@@ -11,7 +11,7 @@ public class Rabus extends ShopItemSingleUse
 	@Override
     protected int getPricePerUse()
     {
-	    return 50;
+	    return 1000;
     }
 	
 	

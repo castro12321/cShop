@@ -29,7 +29,7 @@ public class Economy
 	{
 		if(item.executor.singleUse())
 			return item.executor.getPricePerHour();
-		return item.executor.getPricePerHour() * hours;
+		return item.executor.getPricePerHour() * (float)hours;
 	}
 	
 	
