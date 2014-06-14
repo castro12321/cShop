@@ -7,4 +7,10 @@ public class AdditionalPlot9 extends AdditionalPlot
 	{
 		super(9);
 	}
+	
+	@Override
+    public final float getPricePerHour()
+    {
+		return 9000 / week;
+    }
 }

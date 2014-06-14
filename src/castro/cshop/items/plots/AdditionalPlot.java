@@ -18,12 +18,6 @@ abstract class AdditionalPlot extends ShopItemPermission
     }
 	
 	@Override
-    public final float getPricePerHour()
-    {
-		return 10000 / month;
-    }
-	
-	@Override
 	public float minTime()
 	{
 		return 7*day;

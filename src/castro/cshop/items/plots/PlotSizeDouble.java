@@ -13,6 +13,12 @@ public class PlotSizeDouble extends ShopItemPermission
 	@Override
     public float getPricePerHour()
     {
-		return 1000 / month;
+		return 250 / week;
     }
+	
+	@Override
+	public float minTime()
+	{
+		return week;
+	}
 }

@@ -14,12 +14,6 @@ public class NickColor extends ShopItem
 {
 	public final static String expiredPermission = "cshop.nick.expired";
 	
-	@Override
-    public float getPricePerHour()
-    {
-		return 1000 / month;
-    }
-	
 	private final static List<Character> whitelistedColors = Arrays.asList('a', 'b', 'c', 'd', 'e', 'f', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
 	private String translate(String color)
 	{
@@ -63,4 +57,16 @@ public class NickColor extends ShopItem
 			return !plugin.sendMessage(player, "&cWrong color provided!");
 		return setNick(player, color + player.getName());
     }
+	
+	@Override
+    public float getPricePerHour()
+    {
+		return 50 / day;
+    }
+	
+	@Override
+	public float minTime()
+	{
+		return 24*hour;
+	}
 }

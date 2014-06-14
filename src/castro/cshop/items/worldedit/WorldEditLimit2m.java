@@ -15,12 +15,6 @@ public class WorldEditLimit2m extends ShopItemPermission
     }
 	
 	@Override
-    public float getPricePerHour()
-    {
-		return 2000;
-    }
-	
-	@Override
 	public boolean giveItem(Player player, ShopItemData itemData)
 	{
 		if(!super.giveItem(player, itemData))
@@ -36,4 +30,10 @@ public class WorldEditLimit2m extends ShopItemPermission
 		Player player = Plugin.getPlayer(playername);
 		return Plugin.dispatchCommand(player, "/limit 1");
 	}
+	
+	@Override
+    public float getPricePerHour()
+    {
+		return 2000;
+    }
 }

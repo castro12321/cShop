@@ -13,15 +13,13 @@ public class ChatColors extends ShopItemPermission
 	@Override
     public float getPricePerHour()
     {
-		//return 100/day;
-		return 3000 / month;
+		return 100/day;
     }
 	
 	
 	@Override
 	public float minTime()
 	{
-		//return hour;
 		return 24*hour;
 	}
 }

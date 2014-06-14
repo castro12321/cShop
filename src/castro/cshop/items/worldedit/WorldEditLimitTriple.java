@@ -12,14 +12,7 @@ public class WorldEditLimitTriple extends ShopItemPermission
     public String getPermission()
 	{
 		return "aliquam.welimit.x3";
-    }
-	
-	@Override
-    public float getPricePerHour()
-    {
-		final float perDay = 200;
-		return perDay/24;
-    }
+	}
 	
 	@Override
 	public boolean giveItem(Player player, ShopItemData itemData)
@@ -37,4 +30,10 @@ public class WorldEditLimitTriple extends ShopItemPermission
 		Player player = Plugin.getPlayer(playername);
 		return Plugin.dispatchCommand(player, "/limit 1");
 	}
+	
+	@Override
+    public float getPricePerHour()
+    {
+		return 300 / hour;
+    }
 }
