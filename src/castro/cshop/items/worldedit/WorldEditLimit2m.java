@@ -28,7 +28,9 @@ public class WorldEditLimit2m extends ShopItemPermission
 		if(!super.takeItem(playername, itemData))
 			return false;
 		Player player = Plugin.getPlayer(playername);
-		return Plugin.dispatchCommand(player, "/limit 1");
+		if(player != null)
+			return Plugin.dispatchCommand(player, "/limit 1");
+		return true;
 	}
 	
 	@Override
