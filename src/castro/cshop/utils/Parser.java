@@ -22,7 +22,6 @@ public class Parser
 			String multiplier = time.substring(time.length()-1);
 			String timeString = time.substring(0, time.length()-1);
 			int    timeValue  = CUtils.convert(timeString, Integer.class, 0);
-			Plugin.get.broadcast("parser " + multiplier + " " + timeString + " " + timeValue);
 			switch(multiplier)
 			{
 			case "h": return timeValue;

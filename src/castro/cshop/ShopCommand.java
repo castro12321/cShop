@@ -65,7 +65,7 @@ public class ShopCommand extends BaseCCommand
 		}
 		if(hours < item.executor.minTime())
 			return !plugin.sendMessage(sender, "&cToo short time");
-		Plugin.get.broadcast("cmd: " + cmd + " " + item + " " + hours + " " + extra);
+		//Plugin.get.broadcast("cmd: " + cmd + " " + item + " " + hours + " " + extra);
 		return true;
 	}
 	

@@ -23,7 +23,7 @@ public class Shop implements Runnable
 	public boolean buy(Player player, ShopItemId itemId, long hours, String extra)
 	{
 		String playername = player.getName();
-		Plugin.get.log("smgr buy " + itemId + " for " + playername + " for " + hours + "h; extra: " + extra);
+		//Plugin.get.log("smgr buy " + itemId + " for " + playername + " for " + hours + "h; extra: " + extra);
 		 
 		// Check constraints
 		if(hours > 24*365) // year is enough
@@ -88,8 +88,10 @@ public class Shop implements Runnable
         {
 	        e.printStackTrace();
         }
+        /*
         if(expired.size() > 0)
         	Plugin.get.broadcast("shop run! " + expired.size());
+        */
         
         for(ShopItemData itemdata : expired)
 			if(itemdata.getExecutor().takeItem(itemdata.owner, itemdata))

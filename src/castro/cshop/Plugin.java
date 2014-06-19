@@ -35,7 +35,7 @@ public class Plugin extends CPlugin
 		get = this;
 		
 		CPluginSettings settings = new CPluginSettings();
-		settings.useConfig  = true;
+		settings.useConfig  = false;
 		settings.commandMgr = new CommandMgr(this);
 		settings.listeners.add(new EventListener());
 		return settings;

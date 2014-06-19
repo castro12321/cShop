@@ -58,7 +58,7 @@ public class Economy
 	
 	public static boolean charge(String player, ShopItemId item, long hours)
 	{
-		Plugin.get.log("Charging player");
+		//Plugin.get.log("Charging player");
 		double price = getPrice(item, hours);
 		EconomyResponse resp = economy.withdrawPlayer(player, price);
 		if(!resp.transactionSuccess())
