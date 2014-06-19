@@ -126,10 +126,18 @@ public enum ShopItemId
 		id = id.toLowerCase();
 		switch(id)
 		{
+		case "kolory":
 		case "colors": return CHAT_COLORS;
+		
+		case "nickcolor":
 		case "nick":   return NICK_COLOR;
+		
+		case "glowa":
 		case "head":   return GIVE_HEAD;
+		
+		case "czapka":
 		case "hat":    return HAT;
+		
 		case "vip":    return VIP;
 		case "schematic":   return SCHEMATIC;
 		case "voxelsniper": return VS_ACCESS;
@@ -145,6 +153,7 @@ public enum ShopItemId
 			case "500k"  : return WE_LIMIT_500k;
 			case "2m"    : return WE_LIMIT_2m;
 			}
+		case "dzialka":
 		case "plot":
 			switch(extra)
 			{
