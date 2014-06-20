@@ -18,6 +18,7 @@ public class Rabus extends ShopItemSingleUse
     @Override
     public boolean giveItem(Player player, ShopItemData itemData)
     {
+    	GiveHead.giveHead(player, "Rabus_PL");
 		return plugin.broadcast(player.getName() + ChatColor.GREEN + " kupil Rabusa!");
     }
 }

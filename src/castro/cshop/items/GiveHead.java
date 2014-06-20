@@ -21,26 +21,13 @@ public class GiveHead extends ShopItemSingleUse
 	    return 50;
     }
 	
-	@SuppressWarnings("deprecation")
-    private ItemStack getPlayerSkull()
+	public static boolean giveHead(Player player, String head)
 	{
-		MaterialData data = new MaterialData(Material.SKULL_ITEM);
-		data.setData((byte) 3); // 3 is the player head
-		ItemStack item = data.toItemStack();
-		item.setAmount(1);
-		return item;
-	}
-	
-
-	@Override
-    public boolean giveItem(Player player, ShopItemData itemData)
-    {
 		ItemStack skull = getPlayerSkull();
 		
 		// Link player name with skull
 		SkullMeta sm = (SkullMeta) skull.getItemMeta();
-		String desiredPlayer = itemData.extra;
-		sm.setOwner(desiredPlayer);
+		sm.setOwner(head);
 		
 		// Woozie DRM
 		List<String> lore = new ArrayList<String>();
@@ -54,5 +41,22 @@ public class GiveHead extends ShopItemSingleUse
 		inv.addItem(skull);
 		
 		return true;
+	}
+	
+	@SuppressWarnings("deprecation")
+    private static ItemStack getPlayerSkull()
+	{
+		MaterialData data = new MaterialData(Material.SKULL_ITEM);
+		data.setData((byte) 3); // 3 is the player head
+		ItemStack item = data.toItemStack();
+		item.setAmount(1);
+		return item;
+	}
+	
+
+	@Override
+    public boolean giveItem(Player player, ShopItemData itemData)
+    {
+		return giveHead(player, itemData.extra);
     }
 }
