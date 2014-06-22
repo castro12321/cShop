@@ -1,7 +1,6 @@
 package castro.cshop.utils;
 
 import castro.base.plugin.CUtils;
-import castro.cshop.Plugin;
 
 public class Parser
 {
