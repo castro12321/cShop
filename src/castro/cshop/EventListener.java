@@ -36,7 +36,7 @@ public class EventListener implements Listener
 		final Player player = event.getPlayer();
 		if(player.hasPermission("cshop.nick.expired"))
 		{
-			if(Plugin.SQL.getItemOrNull(player.getName(), ShopItemId.CHAT_COLORS) == null)
+			if(Plugin.SQL.getItemOrNull(player.getName(), ShopItemId.CHAT_COLORS) != null)
 				return;
 			NickColor.setNick(player, player.getName());
 			Plugin.permissions.playerRemove((String)null, player.getName(), NickColor.expiredPermission);
