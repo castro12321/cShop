@@ -12,14 +12,20 @@ public abstract class ShopItemPermission extends ShopItem
 	@Override
 	public boolean giveItem(Player player, ShopItemData itemData)
 	{
-		return Plugin.permissions.playerAdd((String)null, player.getName(), getPermission());
+		boolean success = Plugin.permissions.playerAdd((String)null, player.getName(), getPermission());
+		if(success)
+			Plugin.dispatchConsoleCommand("pex reload");
+		return success;
 	}
 	
 	
 	@Override
 	public boolean takeItem(String playername, ShopItemData itemData)
 	{
-		return Plugin.permissions.playerRemove((String)null, playername, getPermission());
+		boolean success = Plugin.permissions.playerRemove((String)null, playername, getPermission());
+		if(success)
+			Plugin.dispatchConsoleCommand("pex reload");
+		return success;
 	}
 	
 	
