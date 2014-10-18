@@ -47,7 +47,6 @@ import castro.cshop.items.worldedit.WorldEditLimit100k;
 import castro.cshop.items.worldedit.WorldEditLimit2m;
 import castro.cshop.items.worldedit.WorldEditLimit500k;
 import castro.cshop.items.worldedit.WorldEditLimitDouble;
-import castro.cshop.items.worldedit.WorldEditLimitTriple;
 
 
 
@@ -91,7 +90,7 @@ public enum ShopItemId
 	
 	// 1000..1100 <--- WorldEdit
 	WE_LIMIT_DOUBLE  (1001, new WorldEditLimitDouble()),
-	WE_LIMIT_TRIPLE  (1002, new WorldEditLimitTriple()),
+	//WE_LIMIT_TRIPLE  (1002, new WorldEditLimitTriple()),
 	WE_LIMIT_100k    (1003, new WorldEditLimit100k()),
 	WE_LIMIT_500k    (1004, new WorldEditLimit500k()),
 	WE_LIMIT_2m      (1005, new WorldEditLimit2m()),
@@ -148,7 +147,7 @@ public enum ShopItemId
 			switch(extra)
 			{
 			case "double": return WE_LIMIT_DOUBLE;
-			case "triple": return WE_LIMIT_TRIPLE;
+			//case "triple": return WE_LIMIT_TRIPLE;
 			case "100k"  : return WE_LIMIT_100k;
 			case "500k"  : return WE_LIMIT_500k;
 			case "2m"    : return WE_LIMIT_2m;
