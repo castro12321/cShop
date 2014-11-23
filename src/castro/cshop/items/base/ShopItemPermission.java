@@ -13,8 +13,8 @@ public abstract class ShopItemPermission extends ShopItem
 	public boolean giveItem(Player player, ShopItemData itemData)
 	{
 		boolean success = Plugin.permissions.playerAdd((String)null, player.getName(), getPermission());
-		if(success)
-			Plugin.dispatchConsoleCommand("pex reload");
+		//if(success)
+			//Plugin.dispatchConsoleCommand("pex reload");
 		return success;
 	}
 	
@@ -23,8 +23,8 @@ public abstract class ShopItemPermission extends ShopItem
 	public boolean takeItem(String playername, ShopItemData itemData)
 	{
 		boolean success = Plugin.permissions.playerRemove((String)null, playername, getPermission());
-		if(success)
-			Plugin.dispatchConsoleCommand("pex reload");
+		//if(success)
+			//Plugin.dispatchConsoleCommand("pex reload");
 		return success;
 	}
 	
