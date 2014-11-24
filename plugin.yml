@@ -1,5 +1,5 @@
-name: cshop
-version: 0.1.0
+name: cShop
+version: 1.0.0
 main: castro.cshop.Plugin
 depend: [Vault, Base_cPlugin, cWorlds]
 commands:
