@@ -49,8 +49,9 @@ public class Shop implements Runnable
 			}
 			else
 			{
+			    if(!executor.update(player, item))
+			        return !Plugin.get.sendMessage(player, "&cCannot give the item. Please contact an administrator");
 				Plugin.SQL.updateItem(item);
-				executor.update(player, item);
 			}
 		}
 		catch(SQLException e)
