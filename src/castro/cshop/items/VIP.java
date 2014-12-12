@@ -2,6 +2,7 @@ package castro.cshop.items;
 
 import org.bukkit.entity.Player;
 
+import castro.base.plugin.CPlugin;
 import castro.cshop.Plugin;
 import castro.cshop.items.base.ShopItem;
 import castro.cshop.items.base.ShopItemData;
@@ -32,7 +33,7 @@ public class VIP extends ShopItem
 	@Override
     public boolean takeItem(String playername, ShopItemData itemData)
     {
-		return Plugin.permissions.playerRemoveGroup((String)null, playername, VIP_RANK);
+		return CPlugin.removePermission(playername, VIP_RANK);
     }
 
 	@Override

@@ -2,7 +2,7 @@ package castro.cshop.items.base;
 
 import org.bukkit.entity.Player;
 
-import castro.base.Plugin;
+import castro.base.plugin.CPlugin;
 
 public abstract class ShopItemPermission extends ShopItem
 {
@@ -12,7 +12,7 @@ public abstract class ShopItemPermission extends ShopItem
 	@Override
 	public boolean giveItem(Player player, ShopItemData itemData)
 	{
-		boolean success = Plugin.permissions.playerAdd((String)null, player.getName(), getPermission());
+		boolean success = CPlugin.addPermission(player.getName(), getPermission());
 		//if(success)
 			//Plugin.dispatchConsoleCommand("pex reload");
 		return success;
@@ -22,7 +22,7 @@ public abstract class ShopItemPermission extends ShopItem
 	@Override
 	public boolean takeItem(String playername, ShopItemData itemData)
 	{
-		boolean success = Plugin.permissions.playerRemove((String)null, playername, getPermission());
+		boolean success = CPlugin.removePermission(playername, getPermission());
 		//if(success)
 			//Plugin.dispatchConsoleCommand("pex reload");
 		return success;

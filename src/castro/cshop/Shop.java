@@ -6,9 +6,9 @@ import java.util.List;
 
 import org.bukkit.entity.Player;
 
-import castro.cshop.items.base.ShopItemId;
 import castro.cshop.items.base.ShopItem;
 import castro.cshop.items.base.ShopItemData;
+import castro.cshop.items.base.ShopItemId;
 import castro.cshop.utils.Time;
 
 public class Shop implements Runnable
@@ -28,7 +28,7 @@ public class Shop implements Runnable
 		// Check constraints
 		if(hours > 24*365) // year is enough
 			return !Plugin.get.sendMessage(player, "&cToo long time");
-		if(!Economy.canAfford(player.getName(), itemId, hours))
+		if(!Economy.canAfford(player, itemId, hours))
 			return !Plugin.get.sendMessage(player, "&cYou don't have enough cash");
 		
 		// Do the thing

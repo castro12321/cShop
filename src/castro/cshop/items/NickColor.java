@@ -6,6 +6,7 @@ import java.util.List;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
+import castro.base.plugin.CPlugin;
 import castro.cshop.Plugin;
 import castro.cshop.items.base.ShopItem;
 import castro.cshop.items.base.ShopItemData;
@@ -46,7 +47,7 @@ public class NickColor extends ShopItem
 		Player player = Plugin.getPlayer(playername);
 		if(player != null)
 			return NickColor.setNick(player, player.getName());
-		return Plugin.permissions.playerAdd((String)null, playername, expiredPermission);
+		return CPlugin.addPermission(playername, expiredPermission);
     }
 
 	@Override

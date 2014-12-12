@@ -5,8 +5,12 @@
 
 package castro.cshop;
 
-import castro.cshop.items.base.ShopItemId;
 import net.milkbowl.vault.economy.EconomyResponse;
+
+import org.bukkit.entity.Player;
+
+import castro.base.plugin.CPlugin;
+import castro.cshop.items.base.ShopItemId;
 
 public class Economy 
 {
@@ -27,7 +31,7 @@ public class Economy
 	}
 	
 	
-	public static boolean canAfford(String player, ShopItemId item, long hours)
+	public static boolean canAfford(Player player, ShopItemId item, long hours)
 	{
 		double balance = economy.getBalance(player);
 		double price   = getPrice(item, hours);
@@ -48,7 +52,7 @@ public class Economy
 	{
 		//Plugin.get.log("Charging player");
 		double price = getPrice(item, hours);
-		EconomyResponse resp = economy.withdrawPlayer(player, price);
+		EconomyResponse resp = CPlugin.withdrawPlayer(player, price);
 		if(!resp.transactionSuccess())
 			Plugin.get.log("ERROR: Cannot withdraw player. Err: " + resp.errorMessage);
 		return resp.transactionSuccess();
