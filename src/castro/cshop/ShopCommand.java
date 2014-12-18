@@ -5,6 +5,7 @@
 
 package castro.cshop;
 
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 import castro.base.BaseCCommand;
@@ -18,11 +19,15 @@ public class ShopCommand extends BaseCCommand
 	protected ShopItemId item;
 	protected String     extra;
 	protected int        hours;
-	
+	protected boolean   silent = false;
 	
 	@Override
 	protected final boolean prepare()
 	{
+		if(args[args.length-1].equals("-silent"))
+			silent = true;
+		args = Arrays.copyOfRange(args, 0, args.length-2);
+		
 		String cmd = args[0];
 		
 		switch(args.length)
@@ -61,7 +66,7 @@ public class ShopCommand extends BaseCCommand
 	@Override
 	protected boolean execute()
 	{
-		return Plugin.shop.buy(senderPlayer, item, hours, extra);
+		return Plugin.shop.buy(senderPlayer, item, hours, extra, silent);
 	}
 	
 	

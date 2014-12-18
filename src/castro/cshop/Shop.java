@@ -20,7 +20,7 @@ public class Shop implements Runnable
 	}
 	
 	
-	public boolean buy(Player player, ShopItemId itemId, long hours, String extra)
+	public boolean buy(Player player, ShopItemId itemId, long hours, String extra, boolean silent)
 	{
 		String playername = player.getName();
 		//Plugin.get.log("smgr buy " + itemId + " for " + playername + " for " + hours + "h; extra: " + extra);
@@ -60,7 +60,7 @@ public class Shop implements Runnable
 		}
 		
 		// Charge players
-		if(Economy.charge(playername, itemId, hours))
+		if(Economy.charge(playername, itemId, hours) && !silent)
 			return Plugin.get.sendMessage(player, "&aThere you go. Charged $" + Economy.getPrice(itemId, hours));
 		return Plugin.get.sendMessage(player, "&cSomething wen't wrong while charging. Please contact an administrator");
 	}
