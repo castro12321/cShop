@@ -60,8 +60,12 @@ public class Shop implements Runnable
 		}
 		
 		// Charge players
-		if(Economy.charge(playername, itemId, hours) && !silent)
-			return Plugin.get.sendMessage(player, "&aThere you go. Charged $" + Economy.getPrice(itemId, hours));
+		if(Economy.charge(playername, itemId, hours))
+		{
+			if(!silent)
+				Plugin.get.sendMessage(player, "&aThere you go. Charged $" + Economy.getPrice(itemId, hours));
+			return true;
+		}
 		return Plugin.get.sendMessage(player, "&cSomething wen't wrong while charging. Please contact an administrator");
 	}
 	

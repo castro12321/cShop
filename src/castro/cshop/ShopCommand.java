@@ -25,8 +25,12 @@ public class ShopCommand extends BaseCCommand
 	protected final boolean prepare()
 	{
 		if(args[args.length-1].equals("-silent"))
+		{
 			silent = true;
-		args = Arrays.copyOfRange(args, 0, args.length-2);
+			args = Arrays.copyOfRange(args, 0, args.length-1);
+		}
+		for(String arg : args)
+			sender.sendMessage("dupa: " + arg);
 		
 		String cmd = args[0];
 		
