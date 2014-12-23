@@ -1,8 +1,5 @@
 package castro.cshop.items;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -18,25 +15,16 @@ public class GiveHead extends ShopItemSingleUse
 	@Override
     protected int getPricePerUse()
     {
-	    return 50;
+	    return 0;
     }
 	
 	public static boolean giveHead(Player player, String head)
 	{
 		ItemStack skull = getPlayerSkull();
 		
-		// Link player name with skull
 		SkullMeta sm = (SkullMeta) skull.getItemMeta();
 		sm.setOwner(head);
 		
-		// Woozie DRM
-		List<String> lore = new ArrayList<String>();
-		lore.add(player.getName());
-		sm.setLore(lore);
-		
-		skull.setItemMeta(sm);
-		
-		// Finally, add the item
 		Inventory inv = player.getInventory();
 		inv.addItem(skull);
 		
