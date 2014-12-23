@@ -67,6 +67,7 @@ public class SQL extends SQLBase
         	ShopItemData item  = new ShopItemData(id, ShopItemId.get(itemId), nick, extra, exp);
         	expiredItems.add(item);
         }
+        rs.close();
 		return expiredItems;
 	}
 	
