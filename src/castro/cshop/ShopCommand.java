@@ -19,7 +19,7 @@ public class ShopCommand extends BaseCCommand
 	protected ShopItemId item;
 	protected String     extra;
 	protected int        hours;
-	protected boolean   silent = false;
+	protected boolean    silent = false;
 	
 	@Override
 	protected final boolean prepare()
@@ -68,6 +68,8 @@ public class ShopCommand extends BaseCCommand
 	@Override
 	protected boolean execute()
 	{
+		if(item == ShopItemId.HAT)
+			silent = true;
 		return Plugin.shop.buy(senderPlayer, item, hours, extra, silent);
 	}
 	

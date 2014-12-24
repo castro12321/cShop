@@ -24,6 +24,7 @@ public class GiveHead extends ShopItemSingleUse
 		
 		SkullMeta sm = (SkullMeta) skull.getItemMeta();
 		sm.setOwner(head);
+		skull.setItemMeta(sm);
 		
 		Inventory inv = player.getInventory();
 		inv.addItem(skull);
