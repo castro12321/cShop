@@ -27,7 +27,7 @@ public class EventListener implements Listener
 		{
 			if(Plugin.SQL.getItemOrNull(player.getName(), ShopItemId.CHAT_COLORS) != null)
 				return;
-			NickColor.setNick(player, player.getName());
+			NickColor.setNick(player, "off");
 			CPlugin.removePermission(player.getName(), NickColor.expiredPermission);
 		}
 	}
