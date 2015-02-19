@@ -5,6 +5,7 @@ import org.bukkit.entity.Player;
 import castro.base.Plugin;
 import castro.cshop.items.base.ShopItemData;
 import castro.cshop.items.base.ShopItemPermission;
+import castro.ctools.modules.WorldEditLimits;
 
 public class WorldEditLimitDouble extends ShopItemPermission
 {
@@ -19,7 +20,8 @@ public class WorldEditLimitDouble extends ShopItemPermission
 	{
 		if(!super.giveItem(player, itemData))
 			return false;
-		return Plugin.dispatchCommand(player, "/limit 1");
+		WorldEditLimits.reloadPlayerLimit(player);
+		return true;
 	}
 	
 	@Override
@@ -29,7 +31,7 @@ public class WorldEditLimitDouble extends ShopItemPermission
 			return false;
 		Player player = Plugin.getPlayer(playername);
 		if(player != null)
-			return Plugin.dispatchCommand(player, "/limit 1");
+			WorldEditLimits.reloadPlayerLimit(player);
 		return true;
 	}
 	
