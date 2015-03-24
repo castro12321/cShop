@@ -10,8 +10,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-import castro.base.plugin.CPlugin;
 import castro.cshop.items.NickColor;
+import castro.cshop.items.base.ShopItemData;
 import castro.cshop.items.base.ShopItemId;
 
 public class EventListener implements Listener
@@ -23,13 +23,12 @@ public class EventListener implements Listener
 	public void onPlayerJoin(PlayerJoinEvent event)
 	{
 		final Player player = event.getPlayer();
-		if(player.hasPermission("cshop.nick.expired"))
-		{
-			if(Plugin.SQL.getItemOrNull(player.getName(), ShopItemId.CHAT_COLORS) != null)
-				return;
+		
+		ShopItemData iData = Plugin.SQL.getItemOrNull(player.getName(), ShopItemId.NICK_COLOR);
+		if(iData == null)
 			NickColor.setNick(player, "off");
-			CPlugin.removePermission(player.getName(), NickColor.expiredPermission);
-		}
+		else
+			NickColor.setNick(player, "&" + iData.extra + player.getName());
 	}
 	
 	/*
